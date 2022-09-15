@@ -1,2 +1,13 @@
 O "DorkGenerator.py" é um programa escrito em python3 que lê uma wordlist de dorks de sua preferência
 e cria as dorks sem que o usuário precise ficar escrevendo repetidas vezes
+
+----------------
+| MODO DE USAR | 
+----------------
+
+Seu uso é feito da seguinte forma:
+python3 DorkGenerator.py -d (Domínio)
+
+---------------------------------------------------------------------------------------------------
+| A WORDLIST DEVE SER SALVA NA MESMA PASTE QUE O ARQUIVO DORKGENERATOR.PY COM O NOME DE Dorks.txt |
+---------------------------------------------------------------------------------------------------
