@@ -10,11 +10,10 @@ import os
 import sys
 import time
 
-#abre o arquivo de urls e executa os comandos para cada url
-file = open("urls.txt", "r")
-for line in file:
-    line = line.strip()
-    os.system("echo " + line + " | gauplus | kxss | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*' | uniq -u >> kxss.txt")
+#executa o gauplus para pegar as urls e jogar no arquivo gau.txt
+os.system("cat urls.txt | gauplus > gau.txt")
 
-#faz a filtragem do arquivo kxss.txt com o re - regex
-os.system("dalfox file kxss.txt -S -w 200")
+#executa o kxss e filtra com sed para pegar apenas as urls e jogar no arquivo kxss.txt
+os.system("cat gau.txt | kxss | sed 's/.*http/http/' >> kxss.txt")
+#executa o script de xss para cada url
+os.system("cat kxss.txt | dalfox pipe -S --mining-dict | tee  dalfox.txt")
