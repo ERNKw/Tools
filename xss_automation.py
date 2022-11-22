@@ -14,7 +14,7 @@ import time
 file = open("urls.txt", "r")
 for line in file:
     line = line.strip()
-    os.system("echo " + line + " | gauplus | kxss | tee -a kxss.txt")
+    os.system("echo " + line + " | gauplus | kxss | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*' | uniq -u >> kxss.txt")
 
 #faz a filtragem do arquivo kxss.txt com o re - regex
-os.system("cat kxss.txt | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*' | uniq -u | dalfox pipe -S | grep -Eo '(http|https)://[a-zA-Z0-9./?=_-]*' ")
+os.system("dalfox file kxss.txt -S -w 200")
